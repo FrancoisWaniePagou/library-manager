@@ -10,6 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-// Route::get('/', 'LibraryController@index');
+Route::get('/', 'LibraryController@index');
 Route::resource('library','LibraryController');
 Route::resource('document','DocumentController');
