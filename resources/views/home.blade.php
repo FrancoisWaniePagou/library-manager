@@ -23,26 +23,31 @@
                 </tr>
             </thead>
             <tbody>
-            @foreach ($libraries as $library)
-                <tr>
-                    <td>{{ $library->id }}</td>
-                    <td>{{ $library->name }}</td>
-                    <td>{{ $library->owner }}</td>
-                    <td>{{ $library->city }}</td>
-                    <td>{{ $library->quarter }}</td>
-                    <td>{{ $library->phoneNumber }}</td>
-                    <td>
-                        <a class="btn btn-warning" href="{{ route('document.show', ['id' => $library->id]) }}">Show</a>
-                        <a class="btn btn-secondary" href="{{ route('library.edit', ['id' => $library->id]) }}">Edit</a>
-                        <a class="btn btn-danger delete_btn" href="#">Delete</a>
-                        <form id="delete-form" action="{{ route('library.destroy', ['id' => $library->id]) }}" method="POST" style="display: none;">
-                            {{ method_field('DELETE') }}{{ csrf_field() }}
-                        </form>
-                    </td>
-                </tr>
-            @endforeach
+            @if(@isset($libraries) && $libraries)
+                @foreach ($libraries as $library)
+                    <tr>
+                        <td>{{ $library->id }}</td>
+                        <td>{{ $library->name }}</td>
+                        <td>{{ $library->owner }}</td>
+                        <td>{{ $library->city }}</td>
+                        <td>{{ $library->quarter }}</td>
+                        <td>{{ $library->phoneNumber }}</td>
+                        <td>
+                            <a class="btn btn-warning" href="{{ route('document.show', ['id' => $library->id]) }}">Show</a>
+                            <a class="btn btn-secondary" href="{{ route('library.edit', ['id' => $library->id]) }}">Edit</a>
+                            <a class="btn btn-danger delete_btn" href="#">Delete</a>
+                            <form id="delete-form" action="{{ route('library.destroy', ['id' => $library->id]) }}" method="POST" style="display: none;">
+                                {{ method_field('DELETE') }}{{ csrf_field() }}
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
+            @endif
             </tbody>
         </table>
+        @if(@isset($noRecordMessage) && $noRecordMessage)
+            <div class="empty_rows">{{ $noRecordMessage }}</div>
+        @endif
     </div>
 </div>
 @endsection
