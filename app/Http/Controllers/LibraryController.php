@@ -18,10 +18,15 @@ class LibraryController extends Controller
      * @return \Illuminate\Http\Response
      */
    
-    public function index()
-    {
+    public function index(){
         //
-        return view('home')->with('libraries', Library::all());
+        $libraries = Library::all();
+
+        if(empty($libraries->first())){
+            return view('home')->with('noRecordMessage', 'No record available!');
+        }else{
+            return view('home')->with('libraries', $libraries);
+        }
     }
 
     /**
@@ -133,11 +138,12 @@ class LibraryController extends Controller
     public function destroy($id)
     {
         //
-        Library::destroy($id);
-        if(Library::destroy($id)) {
-             return redirect('/library')->with('messageConfirmation', 'Library had been deleted successfully');
+        $library = Library::find($id);
+
+        if($library) {
+            $library->delete();
+            return redirect('/library')->with('messageConfirmation', 'Library had been deleted successfully');
         }
         return redirect('/library')->with('messageConfirmation', 'Library deleting failed');
-       
     }
 }
