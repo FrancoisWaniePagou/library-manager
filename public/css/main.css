@@ -1,10 +1,13 @@
+table {
+    width: 100%;
+}
 tr {
     border-bottom: 1px solid #ccc;
 }
 tr:last-child {
     border-bottom: none;
 }
-td {
+td,th {
     padding: 10px 15px 10px 5px;
 }
 th {
@@ -60,4 +63,10 @@ input[type="submit"] {
     padding: 15px 20px;
     text-align: center;
     transition: 0.3s all ease-in;
+}
+
+.empty_rows {
+    text-align: center;
+    font-size: 28px;
+    padding: 15px;
 }
