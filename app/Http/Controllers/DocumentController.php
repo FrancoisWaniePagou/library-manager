@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Document;
 
 class DocumentController extends Controller
 {
@@ -46,7 +47,7 @@ class DocumentController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('document-list')->with('documents', Document::getAll());
     }
 
     /**

@@ -3,7 +3,7 @@
 
 @section('content')
 <div class="container">
-    <h2>@if((@isset($action) && $action)) {{ $action }} @endif</h2>
+    <h2>@if((isset($action) && $action)) {{ $action }} @endif</h2>
     <a class="back_btn" href="{{ route('library.index') }}">Home</a>
     <form class="form library" action=" {{ url($actionForm) }}" method="POST">
         {{ csrf_field() }}

@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Dictionnary extends Book
+class Dictionnary extends Document
 {
     //
     protected $fillable = ['language'];

@@ -19,8 +19,9 @@
 
 </head>
 <body>
-    <div id="app">
+    <div id="app" class="container">
         <main class="py-4">
+            <h2>Library Manager App</h2>
             @section('content')
             @show
         </main>

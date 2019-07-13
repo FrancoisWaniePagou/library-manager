@@ -7,8 +7,8 @@ tr {
 tr:last-child {
     border-bottom: none;
 }
-td,th {
-    padding: 10px 15px 10px 5px;
+td{
+    padding: 10px 10px 10px 5px;
 }
 th {
     padding: 8px;

@@ -20,8 +20,7 @@ class LibraryController extends Controller
    
     public function index(){
         //
-        $libraries = Library::all();
-
+        $libraries = DB::table('library')->get();
         if(empty($libraries->first())){
             return view('home')->with('noRecordMessage', 'No record available!');
         }else{
@@ -74,7 +73,8 @@ class LibraryController extends Controller
     public function show($id)
     {
         //
-        return 'display a specific library';
+        return redirect()->route('document.show', ['id' => $id]);
+        
     }
 
     /**
