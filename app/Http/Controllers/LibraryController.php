@@ -22,7 +22,7 @@ class LibraryController extends Controller
         //
         $libraries = DB::table('library')->get();
         if(empty($libraries->first())){
-            return view('home')->with('noRecordMessage', 'No record available!');
+            return view('home')->with('noRecordMessage', 'No library recorded!');
         }else{
             return view('home')->with('libraries', $libraries);
         }

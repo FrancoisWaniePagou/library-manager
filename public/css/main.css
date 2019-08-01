@@ -30,6 +30,11 @@ label, input [type="text"] {
 label {
     width: 40%;
 }
+.document_form .radio_group label{
+    display: inline-block;
+    width: auto;   
+    vertical-align: middle;
+}
 input[type="text"] {
     width: 60%;
     padding: 5px 10px;
@@ -69,4 +74,16 @@ input[type="submit"] {
     text-align: center;
     font-size: 28px;
     padding: 15px;
+}
+
+/* formulaire creation de document */
+.document_form .hidden_block{
+    display: none;
+}
+.document_form .radio_group_document_type{
+    display: inline-block;
+    margin-left: 40px;
+}
+.document_form .radio_group .radio_group_document_type:first-child{
+    margin-left: 0;
 }

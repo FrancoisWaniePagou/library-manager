@@ -11,5 +11,6 @@
 |
 */
 Route::get('/', 'LibraryController@index');
+Route::get('document/{idLibrary}/create', 'DocumentController@createDocument')->name('documnent.createDocument');
 Route::resource('library','LibraryController');
 Route::resource('document','DocumentController');
