@@ -17,7 +17,7 @@ class CreateDocumentTable extends Migration
             $table->bigIncrements('id');
             $table->float('price');
             $table->string('title');
-            $table->string('image')->nullable();
+            $table->string('image');
             $table->string('language')->nullable();
             $table->string('month')->nullable();
             $table->string('year')->nullable();

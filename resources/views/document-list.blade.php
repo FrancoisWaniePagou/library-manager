@@ -30,7 +30,6 @@
                     <td>{{ $document->documentType }}</td>
                     <td>{{ $document->image }}</td>
                     <td>
-                        <a class="btn btn-warning" href="{{ route('document.show', ['id' => $document->id]) }}">Show</a>
                         <a class="btn btn-secondary" href="{{ route('document.edit', ['id' => $document->id]) }}">Edit</a>
                         <a class="btn btn-danger delete_btn" href="#">
                             <span>Delete</span>

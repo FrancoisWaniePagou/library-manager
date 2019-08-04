@@ -29,9 +29,12 @@ class DocumentController extends Controller
      */
     public function createDocument($idLibrary)
     {
+        $months = [];
+        $months = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
         return view('create-document')->with([
             'submitValueName' => 'create',
             'idLibrary' => $idLibrary,
+            'months' => $months,
             'actionForm' => 'document'
         ]);
     }
@@ -47,17 +50,11 @@ class DocumentController extends Controller
      */
     public function store(DocumentSubmitRequest $request)
     {
-        $dictionnary = new Dictionnary;
-        $validate = $dictionnary->add($request);
-
-        $dictionnary->price = $validate['price'];
-        $dictionnary->title = $validate['title'];
-        $dictionnary->idLibrary = $validate['id-library'];
-        $dictionnary->language = $validate['language'];
-        // $dictionnary->image = $validate['image'];
-        $dictionnary->documentType = $validate['document-type'];
+        $dictionnary = Dictionnary::create($request->validated());
+        // $validate = $dictionnary->add($request);
         $dictionnary->save();
-        return redirect()->route('document.show', ['id' => $validate['id-library']]);
+        return redirect()->route('document.show', ['id' => $dictionnary->idLibrary])
+                        ->with(['messageConfirmation', 'The library had been created successfully']);
     }
 
     /**
@@ -125,6 +122,13 @@ class DocumentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $globalDocument = GlobalDocument::find($id);
+        $idLibrary = $globalDocument->idLibrary;
+        // var_dump($id); die();
+        if($globalDocument){
+            $globalDocument->delete();
+            return redirect()->route('document.show', ['id' => $idLibrary])->with('messageConfirmation', 'Document had been deleted successfully');
+        }
+        return redirect()->route('document.show', ['id' => $idLibrary])->with('messageConfirmation', 'Document deleting failed');
     }
 }

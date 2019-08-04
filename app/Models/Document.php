@@ -9,7 +9,6 @@ abstract class Document extends Model
     //
     protected $table = 'document';
     protected $primaryKey ='id';
-    protected $fillable = ['price', 'title', 'image', 'idLibrary', 'documentType'];
 
     abstract public function getAll($idLibrary);
     abstract public function getById($idDocument);

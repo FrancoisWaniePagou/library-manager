@@ -9,11 +9,21 @@ class GlobalDocument extends Document
 {
     //
     public function getAll($idLibrary){
-        $globalDocument = GlobalDocument::where('idLibrary', $idLibrary)->get();
-        return $globalDocument;
+        return GlobalDocument::where('idLibrary', $idLibrary)->get();
     }
     public function getById($idDocument){
-        $globalDocument = GlobalDocument::where('id', $idDocument)->get();
+        return GlobalDocument::where('id', $idDocument)->get();
+    }
+    public function add($request){
+
+        $validate = $request->validated();
+        $this->price = $validate['price'];
+        $this->title = $validate['title'];
+        $this->idLibrary = $validate['id-library'];
+        // $this->image = $validate['image'];
+        $this->documentType = $validate['document-type'];
+
+        return $this;
     }
 
 }
