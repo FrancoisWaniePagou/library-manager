@@ -8,18 +8,6 @@ use App\Models\GlobalDocument;
 class Dictionnary extends GlobalDocument
 {
     //
-    protected $fillable = ['price', 'title', 'image', 'idLibrary', 'documentType', 'language'];
+    protected $fillable = ['price', 'title', 'image', 'idLibrary', 'numberOfPage', 'documentType', 'language'];
 
-    // public function add($request){
-
-    //     $validate = $request->validated();
-    //     $this->price = $validate['price'];
-    //     $this->title = $validate['title'];
-    //     $this->idLibrary = $validate['id-library'];
-    //     $this->language = $validate['language'];
-    //     // $this->image = $validate['image'];
-    //     $this->documentType = $validate['document-type'];
-
-    //     return $this;
-    // }
 }

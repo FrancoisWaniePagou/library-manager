@@ -14,16 +14,4 @@ class GlobalDocument extends Document
     public function getById($idDocument){
         return GlobalDocument::where('id', $idDocument)->get();
     }
-    public function add($request){
-
-        $validate = $request->validated();
-        $this->price = $validate['price'];
-        $this->title = $validate['title'];
-        $this->idLibrary = $validate['id-library'];
-        // $this->image = $validate['image'];
-        $this->documentType = $validate['document-type'];
-
-        return $this;
-    }
-
 }

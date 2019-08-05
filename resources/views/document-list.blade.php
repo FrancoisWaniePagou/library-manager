@@ -30,7 +30,7 @@
                     <td>{{ $document->documentType }}</td>
                     <td>{{ $document->image }}</td>
                     <td>
-                        <a class="btn btn-secondary" href="{{ route('document.edit', ['id' => $document->id]) }}">Edit</a>
+                        <a class="btn btn-secondary" href="{{ route('document.edit', ['id' => $document->id, 'document_type' => $document->documentType]) }}">Edit</a>
                         <a class="btn btn-danger delete_btn" href="#">
                             <span>Delete</span>
                             <form class="delete_form" action="{{ route('document.destroy', ['id' => $document->id]) }}" method="POST" style="display: none;">
