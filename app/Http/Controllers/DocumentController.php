@@ -99,7 +99,24 @@ class DocumentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $globalDocument = GlobalDocument::where('id', $id)->get();
+
+        $fieldValue = [
+            'title' => $globalDocument[0]->title,
+            'price' => $globalDocument[0]->price,
+            'image' => $globalDocument[0]->image,
+            'numberOfPage' => $globalDocument[0]->numberOfPage,
+            'language' => $globalDocument[0]->language
+        ];
+
+        $actionForm = 'document/'.$id;
+        return view('create-library')
+                ->with([
+                    'fieldValue' => $fieldValue, 
+                    'action' => 'Edit '. $library[0]->name . ' library',
+                    'submitValueName' => 'update',
+                    'actionForm' => $actionForm
+                ]);
     }
 
     /**
@@ -109,9 +126,20 @@ class DocumentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(DocumentSubmitRequest $request, $id, $documentType)
     {
-        //
+        
+        $globalDocument = new GlobalDocument;
+        $globalDocument = $globalDocument->getAll($id);
+
+        $globalDocument[0]->title = $globalDocument['title'];   
+        $globalDocument[0]->owner = $globalDocument['owner'];   
+        $globalDocument[0]->phoneNumber = $globalDocument['phoneNumber'];   
+        $globalDocument[0]->city = $globalDocument['city'];   
+        $globalDocument[0]->quarter = $globalDocument['quarter'];   
+
+        $library[0]->save();
+        return redirect('/library')->with('messageConfirmation', 'The library had been updated successfully');   
     }
 
     /**
